@@ -42,7 +42,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/responses/Error'
-        default:
+        Other Cases:
           description: Unexpected error
           content:
             application/json:
