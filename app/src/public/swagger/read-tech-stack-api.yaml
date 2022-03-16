@@ -1,40 +1,75 @@
 ---
 openapi: 3.0.0
+
 info:
   title: dev-portfolio
-  description: 기술 스텍 조회 API
+  description: Open API by 'dev-portfolio'
   version: 0.1.0
+
 servers:
-- url: https://virtserver.swaggerhub.com/Modern-egile/dev-portfolio/0.1.0
-  description: SwaggerHub API Auto Mocking
+- url: http://localhost:3000/api/0.1.0
+  description: Open API v0.1.0 
+
 paths:
   /tech-stack:
     get:
-      summary: Gets the teck stack image.
+      summary: Get Tech-stack's informations by using the query of your 'keyword'.
       parameters:
-      - name: keyword
-        in: query
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-          description: tech stack keyword
+        - name: keyword
+          minLength: 1
+          in: query
+          description: This is the keyword you inputted in order to find out the tech-stack's info.
+          required: true
+          style: form
+          explode: true
+          schema:
+            type: string
+            example: javascript
       responses:
-        "200":
+        200:
           description: OK
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/inline_response_200'
+                  $ref: '#/components/responses/200'
+        400:
+          # CASE 1: There isn't the query called 'keyword' in URI.
+          # CASE 2: The query called 'keyword' is less than 1 in length.
+          description: Bad Request 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error'
+
 components:
-  schemas:
-    inline_response_200:
+  responses:
+    200:
       type: object
       properties:
-        logoName:
+        techName:
           type: string
         logoUrl:
           type: string
+      required:
+        - techName
+        - logoUrl
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        error:
+          type: string
+      required:
+        - code
+        - message
