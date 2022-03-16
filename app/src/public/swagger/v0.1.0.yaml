@@ -5,19 +5,31 @@ info:
   title: dev-portfolio
   description: Open API by 'dev-portfolio'
   version: 0.1.0
+  license:
+    name: MIT
+    url: https://github.com/jisu3817/dev-portfolio-test/blob/master/LICENSE
+  # termsOfService: http://example.com/terms/
+  # contact:
+  #   name: API Support
+  #   url: http://www.example.com/support
+  #   email: support@example.com
 
 servers:
   - url: http://localhost:3000/api/0.1.0
     description: Open API v0.1.0 
 
 tags: 
-  - name: PUBLIC
+  - name: Tech
+    description: "Open API about tech"
+    # externalDocs:
+    #   description: "Find out more"
+    #   url: "http://swagger.io"
 
 paths:
   /tech-stack:
     get:
       tags:
-        - PUBLIC
+        - Tech
       summary: Get Tech-stack's info.
       description: Get Tech-stack's informations by using the query of your 'keyword'.
       parameters:
