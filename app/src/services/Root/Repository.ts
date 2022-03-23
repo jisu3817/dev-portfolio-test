@@ -1,11 +1,3 @@
-// export default class Repository {
-//   private pool;
+export default class Repository {
 
-//   constructor() {
-//     this.pool = mariadb.getConnection();
-//   }
-
-//   releaseConnection() {
-//     this.pool.release();
-//   }
-// }
+}
