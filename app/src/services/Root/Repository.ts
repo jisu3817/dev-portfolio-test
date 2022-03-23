@@ -1,13 +1,13 @@
-// import mariaDB from '../../config/mariadb';
+import { publicdb } from '../../config/mariadb';
 
-// export default class Repository {
-//   private pool;
+export default class Repository {
+  private pool;
 
-//   constructor() {
-//     this.pool = mariaDB.getConnection();
-//   }
+  constructor() {
+    this.pool = publicdb.getConnection();
+  }
 
-//   async releaseConnection(): Promise<void> {
-//     (await this.pool).release();
-//   }
-// }
+  async releaseConnection(): Promise<void> {
+    (await this.pool).release();
+  }
+}

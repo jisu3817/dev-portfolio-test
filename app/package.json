@@ -11,7 +11,7 @@
     "lint": "eslint \"./src/**\""
   },
   "lint-staged": {
-    "*.js": [
+    "*.ts": [
       "eslint . --fix",
       "prettier --write"
     ]
